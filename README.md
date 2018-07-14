@@ -92,7 +92,7 @@ Currently, `jpeg, png and tiff` images are supported by the HyperDocs image extr
 	
 * **Error Response:**
 
- 1. Invalid Request Error :
+ Invalid Request Error :
 
          
 	        {
@@ -100,18 +100,19 @@ Currently, `jpeg, png and tiff` images are supported by the HyperDocs image extr
 	          "statusCode": "400",
 	          "error": "E<ERROR-CODE> <ERROR-MESSAGE>"
 	        }
+	   
 	        
-		The different error codes   
+	The different error codes   
 	
-		|Error Code| Description |
-		|---|---|		
-		|1 | Invalid multipart-form
-		|11 | Missing selfie
-		|12 | Missing fb\_access_token
-		|51 | Invalid fb\_access_token
-		|53 | Critical FB Permissions Not Granted
-		|202 | No face detected
-		|203 | Multiple faces detected
+	|Error Code| Description |
+	|---|---|		
+	|1 | Invalid multipart-form
+	|11 | Missing selfie
+	|12 | Missing fb\_access_token
+	|51 | Invalid fb\_access_token
+	|53 | Critical FB Permissions Not Granted
+	|202 | No face detected
+	|203 | Multiple faces detected
 
 	All error messages follow the same syntax with the statusCode and status also being a part of the response body, and `string` error message with the description of the error.
 	
