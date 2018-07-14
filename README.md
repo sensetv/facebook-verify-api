@@ -113,10 +113,10 @@ The different error codes
 |202 | No face detected
 |203 | Multiple faces detected
 
-	All error messages follow the same syntax with the statusCode and status also being a part of the response body, and `string` error message with the description of the error.
+All error messages follow the same syntax with the statusCode and status also being a part of the response body, and `string` error message with the description of the error.
 	
-	**Server Errors**
-	We try our best to avoid these errors, but if by chance they do occur the response code will be 5xx.
+**Server Errors**
+We try our best to avoid these errors, but if by chance they do occur the response code will be 5xx.
 
 
 * **Sample Calls:**
