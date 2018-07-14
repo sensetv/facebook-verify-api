@@ -135,48 +135,36 @@ The different error codes
 Since there could be many photos that would have to be processed for a user, this could take upto 1 minute. Hence, the callback URL is used to asynchronously post the response after the task is completed. The result JSON posted to completion hook has the following format.
 
 
-	{
-	    "matchedImage": {
-	        "timeValidationPassed": <Boolean - digitally qualified 		
-	        						profile>,
-	        "createdTime": <Number - Epoch time of the oldest matched 
-	        				image, exists only when time validation is 
-	        				passed>,
-	        "id": <String - ID of the oldest matched image, exists only 
-	        	  when time validation is passed>,
-	        "url": <String - URL of the above image>
-	        },     
-		"info": {
-			"firstImageActivity": <Number - Epoch time of the oldest image 
-								   uploaded/tagged image of the user>,
-			"id": <String, Facebook User ID>,
-			"name": <String>,
-			"last_name":<String>,
-			"short_name":<String>,
-			"is_verified":<0 or 1 - This field indicates whether the
-										 person's profile is verified 
-										 manually by facebook>,
-			"verified":<0 or 1 - Indicates whether the account has been 
-						 verified by the user via SMS etc>
-			"mostCoTaggedUsers": <Array of user objects who have been 
-								  tagged in photos with this user the
-								  most>,
-			"tagged_places": <Dictionary with an array of few tagged places 
-								and corresponding paging to get 
-								rest of the tagged places>,
-			"age_range": <Dictionary with minimum and maximum age of the 
-						user>,
-			"birthday": <String>,
-			"email":<String>,
-			"friends:<Dictionary with an array of few friends(names and 
-					 ids), corresponding paging to get rest of the friends
-					  and total friend count>
-			"gender":<String>
-			"hometown": <Dictionary with place id and name>
-			"location": <Dictionary with place id and name>
-			}
-		}
-	}
+```
+{
+    "matchedImage": {
+        "timeValidationPassed": <Boolean - digitally qualified profile>,
+        "createdTime": <Number - Epoch time of the oldest matched image, exists only when time validation is passed>,
+        "id": <String - ID of the oldest matched image, exists only when time validation is passed>,
+        "url": <String - URL of the above image>
+        },
+        
+    "info": {
+        "firstImageActivity": <Number - Epoch time of the oldest image uploaded/tagged image of the user>,
+        "id": <String, Facebook User ID>,
+        "name": <String>,
+	"last_name":<String>,
+	"short_name":<String>,
+	"is_verified":<0 or 1 - This field indicates whether the person's profile is verified manually by facebook>,
+	"verified":<0 or 1 - Indicates whether the account has been verified by the user via SMS etc>,
+        "mostCoTaggedUsers": <Array of user objects who have been tagged in photos with this user the most>,
+	"tagged_places": <Dictionary with an array of few tagged places and corresponding paging to get rest of the tagged places>,
+	"age_range": <Dictionary with minimum and maximum age of the user>,
+	"birthday": <String>,
+	"email":<String>,
+	"friends:<Dictionary with an array of few friends(names and ids), corresponding paging to get rest of the friends and total friend count>,
+	"gender":<String>,
+	"hometown": <Dictionary with place id and name>,
+	"location": <Dictionary with place id and name>
+        }
+    }
+}
+```
 
 *Incase the selfie not match with any of the photos the user has provided access to. The "matchedImage" will have only one key, `timeValidationPassed` and this will be set to false.*
 	
