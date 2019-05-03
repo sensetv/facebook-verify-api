@@ -24,7 +24,7 @@ All optional and compulsory parameters are passed as part of the request body.
 ## Root Endpoint
 A `GET` request can be issued to the root endpoint to check for successful connection. Actual endpoint URL will be published later.
 
-	 curl https://docs.hyperverge.co/v1
+curl https://docs.hyperverge.co/v1
 
 The `plain/text` reponse of `"AoK!"` should be received.
 
@@ -32,21 +32,21 @@ The `plain/text` reponse of `"AoK!"` should be received.
 
 Currently, a simple appId, appKey combination is passed in the request header. The appId and appKey are provided on request by the HyperVerge team. If you would like to try the API, please reach out to contact@hyperverge.co
 
-	curl -X POST \
-	  https://docs.hyperverge.co/v1/verifyFB \
-	  -H 'appid: appId-Value' \
-	  -H 'appkey: appKey-Value' \
-	  -H 'content-type: multipart/form-data' \
-	  -F fb_access_token=String \
-	  -F selfie=@Imagepath.jpg \
-	  -F completion_hook=https://www.google.com
+curl -X POST \
+https://docs.hyperverge.co/v1/verifyFB \
+-H 'appid: appId-Value' \
+-H 'appkey: appKey-Value' \
+-H 'content-type: multipart/form-data' \
+-F fb_access_token=String \
+-F selfie=@Imagepath.jpg \
+-F completion_hook=https://www.google.com
 
 On failed attempt with invalid credentials or unauthorized access the following error message should be received :
 
-	{
-	  "status": "failure",
-	  "statusCode": "401"
-	}
+{
+"status": "failure",
+"statusCode": "401"
+}
 
 **Please do not expose the appid and appkey on browser applications. In case of a browser application, set up the API calls from the server side.**
 
@@ -58,53 +58,53 @@ Currently, `jpeg, png and tiff` images are supported by the HyperDocs image extr
 
 * **URL**
 
-    - /verifyFB :
-      
+- /verifyFB :
+
 * **Method:**
 
-    `POST`
+`POST`
 
 * **Header**
-	
-	- content-type : 'formdata'
-	- appid 
-	- appkey
-	
+
+- content-type : 'formdata'
+- appid 
+- appkey
+
 * **Request Body**
 
-	- selfie
-	- fb\_access\_token
-	- completion\_hook 
-  
+- selfie
+- fb\_access\_token
+- completion\_hook 
+
 * **Success Response:**
 
-    * **Code:** 200 <br />
-    * Incase of a properly made request, the response would follow schema.
+* **Code:** 200 <br />
+* Incase of a properly made request, the response would follow schema.
 
-		
-		```
-		{
-			"status" : "success",
-			"statusCode" : "200"
-		}
-		```
-		
-	
+
+```
+{
+"status" : "success",
+"statusCode" : "200"
+}
+```
+
+
 * **Error Response:**
 
- Invalid Request Error :
+Invalid Request Error :
 
-         
-	        {
-	          "status": "failure",
-	          "statusCode": "400",
-	          "error": "E<ERROR-CODE> <ERROR-MESSAGE>"
-	        }
-	                 
+
+{
+"status": "failure",
+"statusCode": "400",
+"error": "E<ERROR-CODE> <ERROR-MESSAGE>"
+}
+
 The different error codes   
-		
+
 |Error Code| Description |
-|---|---|		
+|---|---|        
 |1 | Invalid multipart-form
 |11 | Missing selfie
 |12 | Missing fb\_access_token
@@ -114,21 +114,21 @@ The different error codes
 |203 | Multiple faces detected
 
 All error messages follow the same syntax with the statusCode and status also being a part of the response body, and `string` error message with the description of the error.
-	
+
 **Server Errors**
 We try our best to avoid these errors, but if by chance they do occur the response code will be 5xx.
 
 
 * **Sample Calls:**
 
-			curl -X POST \
-			  https://docs.hyperverge.co/v1/verifyFB \
-			  -H 'appid: appId-Value' \
-			  -H 'appkey: appKey-Value' \
-			  -H 'content-type: multipart/form-data' \
-			  -F fb_access_token=String \
-			  -F selfie=@Imagepath.jpg \
-			  -F completion_hook=https://www.google.com
+curl -X POST \
+https://docs.hyperverge.co/v1/verifyFB \
+-H 'appid: appId-Value' \
+-H 'appkey: appKey-Value' \
+-H 'content-type: multipart/form-data' \
+-F fb_access_token=String \
+-F selfie=@Imagepath.jpg \
+-F completion_hook=https://www.google.com
 
 ### Hook or Callback URL
 
@@ -137,37 +137,37 @@ Since there could be many photos that would have to be processed for a user, thi
 
 ```
 {
-    "matchedImage": {
-        "timeValidationPassed": <Boolean - digitally qualified profile>,
-        "createdTime": <Number - Epoch time of the oldest matched image, exists only when time validation is passed>,
-        "id": <String - ID of the oldest matched image, exists only when time validation is passed>,
-        "url": <String - URL of the above image>
-        },
-        
-    "info": {
-        "firstImageActivity": <Number - Epoch time of the oldest image uploaded/tagged image of the user>,
-        "id": <String, Facebook User ID>,
-        "name": <String>,
-	"last_name":<String>,
-	"short_name":<String>,
-	"is_verified":<0 or 1 - This field indicates whether the person's profile is verified manually by facebook>,
-	"verified":<0 or 1 - Indicates whether the account has been verified by the user via SMS etc>,
-        "mostCoTaggedUsers": <Array of user objects who have been tagged in photos with this user the most>,
-	"tagged_places": <Dictionary with an array of few tagged places and corresponding paging to get rest of the tagged places>,
-	"age_range": <Dictionary with minimum and maximum age of the user>,
-	"birthday": <String>,
-	"email":<String>,
-	"friends:<Dictionary with an array of few friends(names and ids), corresponding paging to get rest of the friends and total friend count>,
-	"gender":<String>,
-	"hometown": <Dictionary with place id and name>,
-	"location": <Dictionary with place id and name>
-        }
-    }
+"matchedImage": {
+"timeValidationPassed": <Boolean - digitally qualified profile>,
+"createdTime": <Number - Epoch time of the oldest matched image, exists only when time validation is passed>,
+"id": <https://www.facebook.com/photo.php?fbid=2487168301569317&set=a.2388183101467838&type=3&theater>,
+"url": <https://www.facebook.com/photo.php?fbid=2450234895262658&set=a.1399172503702241&type=3&theater>
+},
+
+"info": {
+"firstImageActivity": <Number - Epoch time of the oldest image uploaded/tagged image of the user>,
+"id": <String, Facebook User ID>,
+"name": <mohamed>,
+"last_name":<younis>,
+"short_name":<younis>,
+"is_verified":<0 or 1 - This field indicates whether the person's profile is verified manually by facebook>,
+"verified":<0 or 1 - Indicates whether the account has been verified by the user via SMS etc>,
+"mostCoTaggedUsers": <Array of user objects who have been tagged in photos with this user the most>,
+"tagged_places": <egypt>,
+"age_range": <30>,
+"birthday": <25>,
+"email":<facebook@younis.tv>,
+"friends:<Dictionary with an array of few friends(names and ids), corresponding paging to get rest of the friends and total friend count>,
+"gender":<34>,
+"hometown": <cairo>,
+"location": <egypt>
+}
+}
 }
 ```
 
 *Incase the selfie not match with any of the photos the user has provided access to. The "matchedImage" will have only one key, `timeValidationPassed` and this will be set to false.*
-	
+
 Depending on the permissions given by the user and information available in the profile, additional fields might be present in the 'info' object of the result. Eg: Devices, significant_other etc.
 
 **Retry policy**
